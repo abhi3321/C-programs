@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+struct node *next;
+int val;
+};
+struct node *head=NULL;
+void main()
+{
+    int choice;
+    int item;
+    while(1)
+    {
+        {
+        printf("\nChoose one from the below options...\n");
+        printf("\n1.Push\n2.Pop\n3.Show\n4.Exit");
+        printf("\n Enter your choice ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+            {
+                push();
+                break;
+            }
+            case 2:
+            {
+                item=pop();
+                printf("\nThe deleted item is %d\n",item);
+                                break;
+            }
+            case 3:
+            {
+                show();
+                break;
+            }
+            case 4:
+            {
+                printf("Exiting....");
+                break;
+            }
+            default:
+            {
+                printf("Please Enter valid choice ");
+            }
+        }
+    }
+}
+
+    }
+
+void push()
+{
+    int item;
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    if(temp==NULL)
+        printf("Not possible to push");
+        printf("Enter the number ");
+    scanf("%d",&item);
+temp->val=item;
+temp->next=head;
+head=temp;
+}
+int pop()
+{
+    struct node*temp;
+    int item;
+    if(head==NULL)
+        printf("Underflow");
+    else{
+        temp=head;
+        item=temp->val;
+        head=head->next;
+        free(temp);
+        return item;
+    }
+}
+void show()
+{
+    struct node*ptr;
+    ptr=head;
+    if(head==NULL)
+        printf("Stack underflow");
+    else
+    {
+
+        while(ptr!=NULL){
+
+                    printf("%d\n",ptr->val);
+        ptr=ptr->next;
+    }
+}
+}
